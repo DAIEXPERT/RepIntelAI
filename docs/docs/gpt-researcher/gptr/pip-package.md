@@ -1,18 +1,20 @@
+from AI_core import RepintelAI
+
 # PIP Package
-[![PyPI version](https://badge.fury.io/py/gpt-researcher.svg)](https://badge.fury.io/py/gpt-researcher)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/assafelovic/gpt-researcher/blob/master/docs/docs/examples/pip-run.ipynb)
+[![PyPI version](https://badge.fury.io/py/RepIntel_AI.svg)](https://badge.fury.io/py/RepIntel_AI)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/assafelovic/RepIntel_AI/blob/master/docs/docs/examples/pip-run.ipynb)
 
-🌟 **Exciting News!** Now, you can integrate `gpt-researcher` with your apps seamlessly!
+🌟 **Exciting News!** Now, you can integrate `RepIntel_AI` with your apps seamlessly!
 
-## Steps to Install GPT Researcher
+## Steps to Install RepIntel A
 
 Follow these easy steps to get started:
 
 0. **Pre-requisite**: Ensure Python 3.10+ is installed on your machine 💻
-1. **Install gpt-researcher**: Grab the official package from [PyPi](https://pypi.org/project/gpt-researcher/).
+1. **Install RepIntel_AI**: Grab the official package from [PyPi](https://pypi.org/project/RepIntel_AI/).
 
 ```bash
-pip install gpt-researcher
+pip install RepIntel_AI
 ```
 
 2. **Environment Variables:** Create a .env file with your OpenAI API key or simply export it
@@ -25,33 +27,35 @@ export OPENAI_API_KEY={Your OpenAI API Key here}
 export TAVILY_API_KEY={Your Tavily API Key here}
 ```
 
-3. **Start using GPT Researcher in your own codebase**
+3. **Start using RepIntel A in your own codebase**
 
 ## Example Usage
 
 ```python
-from gpt_researcher import GPTResearcher
+from AI_core import RepintelAI
 import asyncio
 
+
 async def get_report(query: str, report_type: str):
-    researcher = GPTResearcher(query, report_type)
+    researcher = RepintelAI(query, report_type)
     research_result = await researcher.conduct_research()
     report = await researcher.write_report()
-    
+
     # Get additional information
     research_context = researcher.get_research_context()
     research_costs = researcher.get_costs()
     research_images = researcher.get_research_images()
     research_sources = researcher.get_research_sources()
-    
+
     return report, research_context, research_costs, research_images, research_sources
+
 
 if __name__ == "__main__":
     query = "what team may win the NBA finals?"
     report_type = "research_report"
 
     report, context, costs, images, sources = asyncio.run(get_report(query, report_type))
-    
+
     print("Report:")
     print(report)
     print("\nResearch Costs:")
@@ -91,22 +95,23 @@ report_type = "outline_report"
 
 ```python
 from fastapi import FastAPI
-from gpt_researcher import GPTResearcher
+from AI_core import RepintelAI
 import asyncio
 
 app = FastAPI()
 
+
 @app.get("/report/{report_type}")
 async def get_report(query: str, report_type: str) -> dict:
-    researcher = GPTResearcher(query, report_type)
+    researcher = RepintelAI(query, report_type)
     research_result = await researcher.conduct_research()
     report = await researcher.write_report()
-    
+
     source_urls = researcher.get_source_urls()
     research_costs = researcher.get_costs()
     research_images = researcher.get_research_images()
     research_sources = researcher.get_research_sources()
-    
+
     return {
         "report": report,
         "source_urls": source_urls,
@@ -129,22 +134,23 @@ pip install 'flask[async]'
 
 ```python
 from flask import Flask, request, jsonify
-from gpt_researcher import GPTResearcher
+from AI_core import RepintelAI
 
 app = Flask(__name__)
+
 
 @app.route('/report/<report_type>', methods=['GET'])
 async def get_report(report_type):
     query = request.args.get('query')
-    researcher = GPTResearcher(query, report_type)
+    researcher = RepintelAI(query, report_type)
     research_result = await researcher.conduct_research()
     report = await researcher.write_report()
-    
+
     source_urls = researcher.get_source_urls()
     research_costs = researcher.get_costs()
     research_images = researcher.get_research_images()
     research_sources = researcher.get_research_sources()
-    
+
     return jsonify({
         "report": report,
         "source_urls": source_urls,
@@ -170,7 +176,7 @@ curl -X GET "http://localhost:5000/report/research_report?query=what team may wi
 ```
 
 ## Getters and Setters
-GPT Researcher provides several methods to retrieve additional information about the research process:
+RepIntel A provides several methods to retrieve additional information about the research process:
 
 ### Get Research Sources
 Sources are the URLs that were used to gather information for the research.
@@ -218,10 +224,10 @@ researcher.add_costs(0.22)
 
 ### Customizing the Research Process
 
-You can customize various aspects of the research process by passing additional parameters when initializing the GPTResearcher:
+You can customize various aspects of the research process by passing additional parameters when initializing the RepIntelAI:
 
 ```python
-researcher = GPTResearcher(
+researcher = RepintelAI(
     query="Your research query",
     report_type="research_report",
     report_format="APA",
@@ -269,4 +275,4 @@ similar_contents = await researcher.get_similar_written_contents_by_draft_sectio
 )
 ```
 
-This comprehensive documentation should help users understand and utilize the full capabilities of the GPT Researcher package.
+This comprehensive documentation should help users understand and utilize the full capabilities of the RepIntel A package.

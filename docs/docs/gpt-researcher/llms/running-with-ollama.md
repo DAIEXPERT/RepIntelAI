@@ -2,7 +2,7 @@
 
 Ollama is a platform that allows you to deploy and manage custom language models. This guide will walk you through deploying a custom language model on Ollama.
 
-Read on to understand how to install a Custom LLM with the Ollama WebUI, and how to query it with GPT-Researcher.
+Read on to understand how to install a Custom LLM with the Ollama WebUI, and how to query it with RepIntel_AI.
 
 
 ## Fetching the Desired LLM Models
@@ -17,12 +17,12 @@ Paste the model name & size into the Web UI:
 
 For our example, let's choose to download the `qwen2:1.5b` model.
 
-This model now automatically becomes available via your Server's out-of-the-box API - we'll leverage it within our GPT-Researcher .env file in the next step.
+This model now automatically becomes available via your Server's out-of-the-box API - we'll leverage it within our RepIntel_AI .env file in the next step.
 
 
-## Querying your Custom LLM with GPT-Researcher
+## Querying your Custom LLM with RepIntel_AI
 
-If you deploy ollama locally, a .env like so, should enable powering GPT-Researcher with Ollama:
+If you deploy ollama locally, a .env like so, should enable powering RepIntel_AI with Ollama:
 
 ```bash
 OPENAI_API_KEY="123"
@@ -36,7 +36,7 @@ EMBEDDING="ollama:all-minilm:22m"
 Replace `FAST_LLM` & `SMART_LLM` with the model you downloaded from the Elestio Web UI in the previous step.
 
 
-## Run LLM Test Script for GPTR
+## Run LLM Test Script for repintelai
 
 And here's a custom python script you can use to query your custom LLM:
 
@@ -45,9 +45,10 @@ And here's a custom python script you can use to query your custom LLM:
 import os
 import asyncio
 import logging
+
 logging.basicConfig(level=logging.DEBUG)
-from gpt_researcher.llm_provider.generic import GenericLLMProvider
-from gpt_researcher.utils.llm import get_llm
+from AI_core.llm_provider.generic import GenericLLMProvider
+from AI_core.utils.llm import get_llm
 
 OLLAMA_BASE_URL = "https://ollama-ug3qr-u21899.vm.elestio.app:57987"
 LLM_MODEL = "llama3.1"
@@ -65,6 +66,7 @@ llm_provider = get_llm(
 # Test the connection with a simple query
 messages = [{"role": "user", "content": "sup?"}]
 
+
 async def test_ollama():
     try:
         response = await llm_provider.get_chat_response(messages, stream=False)
@@ -72,9 +74,10 @@ async def test_ollama():
     except Exception as e:
         print(f"Error: {e}")
 
+
 # Run the async function
 asyncio.run(test_ollama())
-    
+
 ```
 
 Replace `OLLAMA_BASE_URL` with the URL of your Ollama instance, and `LLM_MODEL` with the model you downloaded from the Ollama Web UI.
@@ -88,7 +91,7 @@ Elestio is a platform that allows you to deploy and manage custom language model
 
 You can deploy an [Open WebUI](https://github.com/open-webui/open-webui/tree/main) server with [Elestio](https://elest.io/open-source/ollama)
 
-Here's an example .env file that will enable powering GPT-Researcher with Elestio:
+Here's an example .env file that will enable powering RepIntel_AI with Elestio:
 
 ```bash
 OPENAI_API_KEY="123"

@@ -3,11 +3,13 @@
 Here is a snippet of code to help you verify that your LLM-related environment variables are set up correctly.
 
 ```python
-from gpt_researcher.config.config import Config
-from gpt_researcher.utils.llm import create_chat_completion
+from AI_core.config.config import Config
+from AI_core.utils.llm import create_chat_completion
 import asyncio
 from dotenv import load_dotenv
+
 load_dotenv()
+
 
 async def main():
     cfg = Config()
@@ -15,7 +17,7 @@ async def main():
     try:
         report = await create_chat_completion(
             model=cfg.smart_llm_model,
-            messages = [{"role": "user", "content": "sup?"}],
+            messages=[{"role": "user", "content": "sup?"}],
             temperature=0.35,
             llm_provider=cfg.smart_llm_provider,
             stream=True,
@@ -24,6 +26,7 @@ async def main():
         )
     except Exception as e:
         print(f"Error in calling LLM: {e}")
+
 
 # Run the async function
 asyncio.run(main())

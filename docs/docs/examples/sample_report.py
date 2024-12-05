@@ -2,12 +2,12 @@ import nest_asyncio  # required for notebooks
 
 nest_asyncio.apply()
 
-from gpt_researcher import GPTResearcher
+from AI_core import RepintelAI
 import asyncio
 
 
 async def get_report(query: str, report_type: str):
-    researcher = GPTResearcher(query, report_type)
+    researcher = RepintelAI(query, report_type)
     research_result = await researcher.conduct_research()
     report = await researcher.write_report()
 

@@ -1,13 +1,13 @@
 # Configure LLM
 
-As described in the [introduction](/docs/gpt-researcher/gptr/config), the default LLM is OpenAI due to its superior performance and speed. 
-With that said, GPT Researcher supports various open/closed source LLMs, and you can easily switch between them by adding the `LLM_PROVIDER` env variable and corresponding configuration params.
+As described in the [introduction](/docs/RepIntel_AI/repintelai/config), the default LLM is OpenAI due to its superior performance and speed. 
+With that said, RepIntel A supports various open/closed source LLMs, and you can easily switch between them by adding the `LLM_PROVIDER` env variable and corresponding configuration params.
 Current supported LLMs are `openai`, `anthropic`, `azure_openai`, `cohere`, `google_vertexai`, `google_genai`, `fireworks`, `ollama`, `together`, `mistralai`, `huggingface`, `groq` and `bedrock`.
 
 Using any model will require updating the `SMART_LLM` and `FAST_LLM` env vars. You might also need to include the LLM provider API Key.
-To learn more about support customization options see [here](/gpt-researcher/config).
+To learn more about support customization options see [here](/RepIntel_AI/config).
 
-**Please note**: GPT Researcher is optimized and heavily tested on GPT models. Some other models might run into context limit errors, and unexpected responses.
+**Please note**: RepIntel A is optimized and heavily tested on GPT models. Some other models might run into context limit errors, and unexpected responses.
 Please provide any feedback in our [Discord community](https://discord.gg/DUmbTebB) channel, so we can better improve the experience and performance.
 
 Below you can find examples for how to configure the various supported LLMs.
@@ -57,7 +57,7 @@ SMART_LLM=openai:gpt-4o # note that the deployment name must be the same as the 
 
 ## Ollama
 
-GPT Researcher supports both Ollama LLMs and embeddings. You can choose each or both.
+RepIntel A supports both Ollama LLMs and embeddings. You can choose each or both.
 To use [Ollama](http://www.ollama.com) you can set the following environment variables
 
 ```bash
@@ -70,7 +70,7 @@ SMART_LLM="ollama:llama3"
 ## Groq
 
 GroqCloud provides advanced AI hardware and software solutions designed to deliver amazingly fast AI inference performance.
-To leverage Groq in GPT-Researcher, you will need a GroqCloud account and an API Key. (__NOTE:__ Groq has a very _generous free tier_.)
+To leverage Groq in RepIntel_AI, you will need a GroqCloud account and an API Key. (__NOTE:__ Groq has a very _generous free tier_.)
 
 ### Sign up
 - You can signup here: [https://console.groq.com/login](https://console.groq.com/login)
@@ -80,7 +80,7 @@ To leverage Groq in GPT-Researcher, you will need a GroqCloud account and an API
 `GROQ_API_KEY="*********************"`
 
 ### Update env vars
-And finally, you will need to configure the GPT-Researcher Provider and Model variables:
+And finally, you will need to configure the RepIntel_AI Provider and Model variables:
 
 ```bash
 # To use Groq set the llm provider to groq

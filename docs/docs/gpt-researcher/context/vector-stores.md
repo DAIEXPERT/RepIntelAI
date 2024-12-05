@@ -1,16 +1,17 @@
 # Vector Stores
 
-The GPT Researcher package allows you to integrate with existing langchain vector stores that have been populated.
+The RepIntel A package allows you to integrate with existing langchain vector stores that have been populated.
 For a complete list of supported langchain vector stores, please refer to this [link](https://python.langchain.com/v0.2/docs/integrations/vectorstores/).
 
 You can create a set of embeddings and langchain documents and store them in any supported vector store of your choosing.
-GPT-Researcher will work with any langchain vector store that implements the `asimilarity_search` method.
+RepIntel_AI will work with any langchain vector store that implements the `asimilarity_search` method.
 
 **If you want to use the existing knowledge in your vector store, make sure to set `report_source="langchain_vectorstore"`. Any other settings will add additional information from scraped data and might contaminate your vectordb (See _How to add scraped data to your vector store_ for more context)**
 
 ## Faiss
+
 ```python
-from gpt_researcher import GPTResearcher
+from AI_core import RepintelAI
 
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
@@ -71,9 +72,8 @@ query = """
     Include some recommendations for entrepreneurs in the conclusion.
 """
 
-
-# Create an instance of GPTResearcher
-researcher = GPTResearcher(
+# Create an instance of RepIntelAI
+researcher = RepintelAI(
     query=query,
     report_type="research_report",
     report_source="langchain_vectorstore",
@@ -87,13 +87,13 @@ report = await researcher.write_report()
 
 
 ## PGVector
+
 ```python
-from gpt_researcher import GPTResearcher
+from AI_core import RepintelAI
 from langchain_postgres.vectorstores import PGVector
 from langchain_openai import OpenAIEmbeddings
 
 CONNECTION_STRING = 'postgresql://someuser:somepass@localhost:5432/somedatabase'
-
 
 # assuming the vector store exists and contains the relevent documents
 # also assuming embeddings have been or will be generated
@@ -111,12 +111,12 @@ query = """
     during each season.
 """
 
-# Create an instance of GPTResearcher
-researcher = GPTResearcher(
+# Create an instance of RepIntelAI
+researcher = RepintelAI(
     query=query,
     report_type="research_report",
     report_source="langchain_vectorstore",
-    vector_store=vector_store, 
+    vector_store=vector_store,
 )
 
 # Conduct research and write the report
@@ -125,10 +125,10 @@ report = await researcher.write_report()
 ```
 ## Adding Scraped Data to your vector store
 
-In some cases in which you want to store the scraped data and documents into your own vector store for future usages, GPT-Researcher also allows you to do so seamlessly just by inputting your vector store (make sure to set `report_source` value to something other than `langchain_vectorstore`)
+In some cases in which you want to store the scraped data and documents into your own vector store for future usages, RepIntel_AI also allows you to do so seamlessly just by inputting your vector store (make sure to set `report_source` value to something other than `langchain_vectorstore`)
 
 ```python
-from gpt_researcher import GPTResearcher
+from AI_core import RepintelAI
 
 from langchain_community.vectorstores import InMemoryVectorStore
 from langchain_openai import OpenAIEmbeddings
@@ -137,19 +137,19 @@ vector_store = InMemoryVectorStore(embedding=OpenAIEmbeddings())
 
 query = "The best LLM"
 
-# Create an instance of GPTResearcher
-researcher = GPTResearcher(
+# Create an instance of RepIntelAI
+researcher = RepintelAI(
     query=query,
     report_type="research_report",
     report_source="web",
-    vector_store=vector_store, 
+    vector_store=vector_store,
 )
 
 # Conduct research, the context will be chunked and stored in the vector_store
 await researcher.conduct_research()
 
 # Query the 5 most relevant context in our vector store
-related_contexts = await vector_store.asimilarity_search("GPT-4", k = 5) 
+related_contexts = await vector_store.asimilarity_search("GPT-4", k=5)
 print(related_contexts)
-print(len(related_contexts)) #Should be 5 
+print(len(related_contexts))  # Should be 5 
 ```

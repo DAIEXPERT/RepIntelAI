@@ -5,42 +5,32 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'GPT Researcher',
-    Svg: require('../../static/img/gptr-logo.png').default,
-    docLink: './docs/gpt-researcher/getting-started/getting-started',
+    title: 'Repintel Platform',
+    Svg: require('../../static/img/repintel-logo.png').default,
+    docLink: './docs/repintel/getting-started/introduction',
     description: (
       <>
-        GPT Researcher is an open source autonomous agent designed for comprehensive online research on a variety of tasks.
+        Repintel is an open-source platform designed to conduct in-depth online research and intelligence on various tasks.
       </>
     ),
   },
-  /*{
-    title: 'Tavily Search API',
-    Svg: require('../../static/img/tavily.png').default,
-    docLink: './docs/tavily-api/introduction',
-    description: (
-      <>
-        Tavily Search API is a search engine optimized for LLMs, optimized for a factual, efficient, and persistent search experience
-      </>
-    ),
-  },*/
   {
     title: 'Multi-Agent Assistant',
     Svg: require('../../static/img/multi-agent.png').default,
-    docLink: './docs/gpt-researcher/multi_agents/langgraph',
+    docLink: './docs/repintel/multi_agents/overview',
     description: (
       <>
-        Learn how a team of AI agents can work together to conduct research on a given topic, from planning to publication.
+        Discover how Repintel's AI agents work collaboratively to gather insights and produce comprehensive intelligence reports.
       </>
     ),
   },
   {
     title: 'Examples and Demos',
     Svg: require('../../static/img/examples.png').default,
-    docLink: './docs/examples/examples',
+    docLink: './docs/repintel/examples/overview',
     description: (
       <>
-          Check out GPT Researcher in action across multiple frameworks and use cases such as hybrid research and long detailed reports.
+          Explore Repintel in action across different scenarios, showcasing its research capabilities and analytical precision.
       </>
     ),
   },
@@ -50,7 +40,6 @@ function Feature({Svg, title, description, docLink}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        {/*<Svg className={styles.featureSvg} alt={title} />*/}
         <img src={Svg} alt={title} height="60"/>
       </div>
       <div className="text--center padding-horiz--md">

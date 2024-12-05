@@ -1,5 +1,5 @@
 """
-Provides a command line interface for the GPTResearcher class.
+Provides a command line interface for the RepintelAI class.
 
 Usage:
 
@@ -15,8 +15,8 @@ from uuid import uuid4
 
 from dotenv import load_dotenv
 
-from gpt_researcher import GPTResearcher
-from gpt_researcher.utils.enum import ReportType
+from AI_core import RepintelAI
+from AI_core.utils.enum import ReportType
 from backend.report_type import DetailedReport
 
 # =============================================================================
@@ -82,7 +82,7 @@ async def main(args):
 
         report = await detailed_report.run()
     else:
-        researcher = GPTResearcher(
+        researcher = RepintelAI(
             query=args.query,
             report_type=args.report_type)
 

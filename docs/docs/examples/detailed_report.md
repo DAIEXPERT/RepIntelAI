@@ -2,9 +2,9 @@
 
 ## Overview
 
-The `DetailedReport` class inspired by the recent STORM paper, is a powerful component of GPT Researcher, designed to generate comprehensive reports on complex topics. It's particularly useful for creating long-form content that exceeds the typical limits of LLM outputs. This class orchestrates the research process, breaking down the main query into subtopics, conducting in-depth research on each, and combining the results into a cohesive, detailed report.
+The `DetailedReport` class inspired by the recent STORM paper, is a powerful component of RepIntel A, designed to generate comprehensive reports on complex topics. It's particularly useful for creating long-form content that exceeds the typical limits of LLM outputs. This class orchestrates the research process, breaking down the main query into subtopics, conducting in-depth research on each, and combining the results into a cohesive, detailed report.
 
-Located in `backend/report_types/detailed_report.py` in the [GPT Researcher GitHub repository](https://github.com/assafelovic/gpt-researcher), this class leverages the capabilities of the `GPTResearcher` agent to perform targeted research and generate content.
+Located in `backend/report_types/detailed_report.py` in the [RepIntel A GitHub repository](https://github.com/assafelovic/RepIntel_AI), this class leverages the capabilities of the `RepIntelAI` agent to perform targeted research and generate content.
 
 ## Key Features
 
@@ -48,8 +48,9 @@ Here's how you can use the `DetailedReport` class in your project:
 ```python
 import asyncio
 from fastapi import WebSocket
-from gpt_researcher.utils.enum import Tone
+from AI_core.utils.enum import Tone
 from backend.report_type import DetailedReport
+
 
 async def generate_report(websocket: WebSocket):
     detailed_report = DetailedReport(
@@ -67,6 +68,7 @@ async def generate_report(websocket: WebSocket):
     final_report = await detailed_report.run()
     return final_report
 
+
 # In your FastAPI app
 @app.websocket("/generate_report")
 async def websocket_endpoint(websocket: WebSocket):
@@ -79,4 +81,4 @@ This example demonstrates how to create a `DetailedReport` instance and run it t
 
 ## Conclusion
 
-The `DetailedReport` class is a sophisticated tool for generating in-depth, well-structured reports on complex topics. By breaking down the main query into subtopics and leveraging the power of GPT Researcher, it can produce content that goes beyond the typical limitations of LLM outputs. This makes it an invaluable asset for researchers, content creators, and anyone needing detailed, well-researched information on a given topic.
+The `DetailedReport` class is a sophisticated tool for generating in-depth, well-structured reports on complex topics. By breaking down the main query into subtopics and leveraging the power of RepIntel A, it can produce content that goes beyond the typical limitations of LLM outputs. This makes it an invaluable asset for researchers, content creators, and anyone needing detailed, well-researched information on a given topic.

@@ -1,13 +1,13 @@
 # Run with CLI
 
-This command-line interface (CLI) tool allows you to generate research reports using the GPTResearcher class. It provides an easy way to conduct research on various topics and generate different types of reports.
+This command-line interface (CLI) tool allows you to generate research reports using the RepIntelAIclass. It provides an easy way to conduct research on various topics and generate different types of reports.
 
 ## Installation
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/gpt-researcher.git
-   cd gpt-researcher
+   git clone https://github.com/yourusername/RepIntel_AI.git
+   cd RepIntel_AI
    ```
 
 2. Install the required dependencies:

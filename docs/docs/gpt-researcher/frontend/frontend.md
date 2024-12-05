@@ -1,8 +1,8 @@
 # Frontend Application
 
-This frontend project aims to enhance the user experience of GPT Researcher, providing an intuitive and efficient interface for automated research. It offers two deployment options to suit different needs and environments.
+This frontend project aims to enhance the user experience of RepIntel A, providing an intuitive and efficient interface for automated research. It offers two deployment options to suit different needs and environments.
 
-View a Product Tutorial here: [GPT-Researcher Frontend Tutorial](https://www.youtube.com/watch?v=hIZqA6lPusk)
+View a Product Tutorial here: [RepIntel_AI Frontend Tutorial](https://www.youtube.com/watch?v=hIZqA6lPusk)
 
 
 ## NextJS Frontend App
@@ -10,15 +10,15 @@ View a Product Tutorial here: [GPT-Researcher Frontend Tutorial](https://www.you
 The React app (located in the `frontend` directory) is our Frontend 2.0 which we hope will enable us to display the robustness of the backend on the frontend, as well.
 
 It comes with loads of added features, such as: 
- - a drag-n-drop user interface for uploading and deleting files to be used as local documents by GPTResearcher.
- - a GUI for setting your GPTR environment variables.
+ - a drag-n-drop user interface for uploading and deleting files to be used as local documents by repintelaiesearcher.
+ - a GUI for setting your repintelai environment variables.
  - the ability to trigger the multi_agents flow via the Backend Module or Langgraph Cloud Host (currently in closed beta).
  - stability fixes
  - and more coming soon!
 
 ### Run the NextJS React App with Docker
 
-> **Step 1** - [Install Docker](https://docs.gptr.dev/docs/gpt-researcher/getting-started/getting-started-with-docker)
+> **Step 1** - [Install Docker](https://docs.repintelai.dev/docs/RepIntel_AI/getting-started/getting-started-with-docker)
 
 > **Step 2** - Clone the '.env.example' file, add your API Keys to the cloned file and save the file as '.env'
 
@@ -63,7 +63,7 @@ A lightweight solution using FastAPI to serve static files.
 3. Access at `http://localhost:8000`
 
 #### Demo
-<iframe height="400" width="700" src="https://github.com/assafelovic/gpt-researcher/assets/13554167/dd6cf08f-b31e-40c6-9907-1915f52a7110" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe height="400" width="700" src="https://github.com/assafelovic/RepIntel_AI/assets/13554167/dd6cf08f-b31e-40c6-9907-1915f52a7110" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
 ## Yet Another Option: Running NextJS Frontend via CLI
@@ -113,7 +113,7 @@ For production, NextJS is recommended.
 
 ## Frontend Features
 
-Our frontend enhances GPT-Researcher by providing:
+Our frontend enhances RepIntel_AI by providing:
 
 1. Intuitive Research Interface: Streamlined input for research queries.
 2. Real-time Progress Tracking: Visual feedback on ongoing research tasks.
@@ -121,4 +121,4 @@ Our frontend enhances GPT-Researcher by providing:
 4. Customizable Settings: Adjust research parameters to suit specific needs.
 5. Responsive Design: Optimal experience across various devices.
 
-These features aim to make the research process more efficient and user-friendly, complementing GPT-Researcher's powerful agent capabilities.
+These features aim to make the research process more efficient and user-friendly, complementing RepIntel_AI's powerful agent capabilities.

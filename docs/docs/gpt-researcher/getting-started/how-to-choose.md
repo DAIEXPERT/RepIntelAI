@@ -1,17 +1,17 @@
 # How to Choose
 
-GPT Researcher is a powerful autonomous research agent designed to enhance and streamline your research processes. Whether you're a developer looking to integrate research capabilities into your project or an end-user seeking a comprehensive research solution, GPT Researcher offers flexible options to meet your needs.
+RepIntel A is a powerful autonomous research agent designed to enhance and streamline your research processes. Whether you're a developer looking to integrate research capabilities into your project or an end-user seeking a comprehensive research solution, RepIntel A offers flexible options to meet your needs.
 
-We envision a future where AI agents collaborate to complete complex tasks, with research being a critical step in the process. GPT Researcher aims to be your go-to agent for any research task, regardless of complexity. It can be easily integrated into existing agent workflows, eliminating the need to create your own research agent from scratch.
+We envision a future where AI agents collaborate to complete complex tasks, with research being a critical step in the process. RepIntel A aims to be your go-to agent for any research task, regardless of complexity. It can be easily integrated into existing agent workflows, eliminating the need to create your own research agent from scratch.
 
 ## Options
 
-GPT Researcher offers multiple ways to leverage its capabilities:
+RepIntel A offers multiple ways to leverage its capabilities:
 
 <img src="https://github.com/user-attachments/assets/305fa3b9-60fa-42b6-a4b0-84740ab6c665" alt="Logo" width="568"></img>
 <br></br>
 
-1. **GPT Researcher PIP agent**: Ideal for integrating GPT Researcher into your existing projects and workflows.
+1. **RepIntel A PIP agent**: Ideal for integrating RepIntel A into your existing projects and workflows.
 2. **Backend**: A backend service to interact with the frontend user interfaces, offering advanced features like detailed reports.
 3. **Multi Agent System**: An advanced setup using LangGraph, offering the most comprehensive research capabilities.
 4. **Frontend**: Several front-end solutions depending on your needs, including a simple HTML/JS version and a more advanced NextJS version.
@@ -20,7 +20,7 @@ GPT Researcher offers multiple ways to leverage its capabilities:
 
 ### 1. PIP Package
 
-The PIP package is ideal for leveraging GPT Researcher as an agent in your preferred environment and code.
+The PIP package is ideal for leveraging RepIntel A as an agent in your preferred environment and code.
 
 **Pros:**
 - Easy integration into existing projects
@@ -33,14 +33,14 @@ The PIP package is ideal for leveraging GPT Researcher as an agent in your prefe
 
 **Installation:**
 ```
-pip install gpt-researcher
+pip install RepIntel_AI
 ```
 
 **System Requirements:**
 - Python 3.10+
 - pip package manager
 
-**Learn More:** [PIP Documentation](https://docs.gptr.dev/docs/gpt-researcher/gptr/pip-package)
+**Learn More:** [PIP Documentation](https://docs.repintelai.dev/docs/RepIntel_AI/repintelai/pip-package)
 
 ### 2. End-to-End Application
 
@@ -56,19 +56,19 @@ For a complete out-of-the-box experience, including a sleek frontend, you can cl
 - Requires setting up the entire application
 
 **Getting Started:**
-1. Clone the repository: `git clone https://github.com/assafelovic/gpt-researcher.git`
-2. Follow the [installation instructions](https://docs.gptr.dev/docs/gpt-researcher/getting-started/getting-started)
+1. Clone the repository: `git clone https://github.com/assafelovic/RepIntel_AI.git`
+2. Follow the [installation instructions](https://docs.repintelai.dev/docs/RepIntel_AI/getting-started/getting-started)
 
 **System Requirements:**
 - Git
 - Python 3.10+
 - Node.js and npm (for frontend)
 
-**Advanced Usage Example:** [Detailed Report Implementation](https://github.com/assafelovic/gpt-researcher/tree/master/backend/report_type/detailed_report)
+**Advanced Usage Example:** [Detailed Report Implementation](https://github.com/assafelovic/RepIntel_AI/tree/master/backend/report_type/detailed_report)
 
 ### 3. Multi Agent System with LangGraph
 
-We've collaborated with LangChain to support multi-agents with LangGraph and GPT Researcher, offering the most complex and comprehensive version of GPT Researcher.
+We've collaborated with LangChain to support multi-agents with LangGraph and RepIntel A, offering the most complex and comprehensive version of RepIntel A.
 
 **Pros:**
 - Very detailed, customized research reports
@@ -84,7 +84,7 @@ This version is recommended for local, experimental, and educational use. We're 
 - Python 3.10+
 - LangGraph library
 
-**Learn More:** [GPT Researcher x LangGraph](https://docs.gptr.dev/docs/gpt-researcher/multi_agents/langgraph)
+**Learn More:** [RepIntel A x LangGraph](https://docs.repintelai.dev/docs/RepIntel_AI/multi_agents/langgraph)
 
 ## Comparison Table
 
@@ -103,26 +103,26 @@ Please note that all options have been optimized and refined for production use.
 To learn more about each of the options, check out these docs and code snippets:
 
 1. **PIP Package**: 
-   - Install: `pip install gpt-researcher`
-   - [Integration guide](https://docs.gptr.dev/docs/gpt-researcher/gptr/pip-package)
+   - Install: `pip install RepIntel_AI`
+   - [Integration guide](https://docs.repintelai.dev/docs/RepIntel_AI/repintelai/pip-package)
 
 2. **End-to-End Application**: 
-   - Clone the repository: `git clone https://github.com/assafelovic/gpt-researcher.git`
-   - [Installation instructions](https://docs.gptr.dev/docs/gpt-researcher/getting-started/getting-started)
+   - Clone the repository: `git clone https://github.com/assafelovic/RepIntel_AI.git`
+   - [Installation instructions](https://docs.repintelai.dev/docs/RepIntel_AI/getting-started/getting-started)
 
 3. **Multi-Agent System**: 
-   - [Multi-Agents code](https://github.com/assafelovic/gpt-researcher/tree/master/multi_agents)
-   - [LangGraph documentation](https://docs.gptr.dev/docs/gpt-researcher/multi_agents/langgraph)
-   - [Blog](https://docs.gptr.dev/blog/gptr-langgraph)
+   - [Multi-Agents code](https://github.com/assafelovic/RepIntel_AI/tree/master/multi_agents)
+   - [LangGraph documentation](https://docs.repintelai.dev/docs/RepIntel_AI/multi_agents/langgraph)
+   - [Blog](https://docs.repintelai.dev/blog/repintelai-langgraph)
 
 ## Versioning and Updates
 
-GPT Researcher is actively maintained and updated. To ensure you're using the latest version:
+RepIntel A is actively maintained and updated. To ensure you're using the latest version:
 
-- For the PIP package: `pip install --upgrade gpt-researcher`
+- For the PIP package: `pip install --upgrade RepIntel_AI`
 - For the End-to-End Application: Pull the latest changes from the GitHub repository
 - For the Multi-Agent System: Check the documentation for compatibility with the latest LangChain and LangGraph versions
 
 ## Troubleshooting and FAQs
 
-For common issues and questions, please refer to our [FAQ section](https://docs.gptr.dev/docs/faq) in the documentation.
+For common issues and questions, please refer to our [FAQ section](https://docs.repintelai.dev/docs/faq) in the documentation.

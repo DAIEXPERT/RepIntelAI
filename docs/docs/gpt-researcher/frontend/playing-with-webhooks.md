@@ -1,6 +1,6 @@
 # Playing with Webhooks
 
-The GPTR Frontend is powered by Webhooks streaming back from the Backend. This allows for real-time updates on the status of your research tasks, as well as the ability to interact with the Backend directly from the Frontend.
+The repintelai Frontend is powered by Webhooks streaming back from the Backend. This allows for real-time updates on the status of your research tasks, as well as the ability to interact with the Backend directly from the Frontend.
 
 
 ## Inspecting Webhooks
@@ -20,4 +20,4 @@ Click into the WS request & go to the "Headers" tab
 
 ![image](https://github.com/user-attachments/assets/dbd58c1d-3506-411a-852b-e1b133b6f5c8)
 
-For debugging, have a look at the <a href="https://github.com/assafelovic/gpt-researcher/blob/master/frontend/nextjs/helpers/getHost.js">getHost function.</a>
+For debugging, have a look at the <a href="https://github.com/assafelovic/RepIntel_AI/blob/master/frontend/nextjs/helpers/getHost.js">getHost function.</a>

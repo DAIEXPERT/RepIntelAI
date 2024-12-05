@@ -2,9 +2,9 @@
 
 ## Introduction
 
-GPT Researcher can combine web search capabilities with local document analysis to provide comprehensive, context-aware research results. 
+RepIntel A can combine web search capabilities with local document analysis to provide comprehensive, context-aware research results. 
 
-This guide will walk you through the process of setting up and running hybrid research using GPT Researcher.
+This guide will walk you through the process of setting up and running hybrid research using RepIntel A.
 
 ## Prerequisites
 
@@ -12,13 +12,13 @@ Before you begin, ensure you have the following:
 
 - Python 3.10 or higher installed on your system
 - pip (Python package installer)
-- An OpenAI API key (you can also choose other supported [LLMs](../gpt-researcher/llms/llms.md))
-- A Tavily API key (you can also choose other supported [Retrievers](../gpt-researcher/search-engines/retrievers.md))
+- An OpenAI API key (you can also choose other supported [LLMs](../RepIntel_AI/llms/llms.md))
+- A Tavily API key (you can also choose other supported [Retrievers](../RepIntel_AI/search-engines/retrievers.md))
 
 ## Installation
 
 ```bash
-pip install gpt-researcher
+pip install RepIntel_AI
 ```
 
 ## Setting Up the Environment
@@ -48,14 +48,16 @@ os.environ['TAVILY_API_KEY'] = 'your_tavily_api_key_here'
 Here's a basic script to run hybrid research:
 
 ```python
-from gpt_researcher import GPTResearcher
+from AI_core import RepintelAI
 import asyncio
 
+
 async def get_research_report(query: str, report_type: str, report_source: str) -> str:
-    researcher = GPTResearcher(query=query, report_type=report_type, report_source=report_source)
+    researcher = RepintelAI(query=query, report_type=report_type, report_source=report_source)
     research = await researcher.conduct_research()
     report = await researcher.write_report()
     return report
+
 
 if __name__ == "__main__":
     query = "How does our product roadmap compare to emerging market trends in our industry?"
@@ -85,13 +87,13 @@ The output will be a comprehensive research report that combines insights from b
 **Q: How long does a typical research session take?**
 A: The duration varies based on the complexity of the query and the amount of data to process. It can range from 1-5 minutes for very comprehensive research.
 
-**Q: Can I use GPT Researcher with other language models?**
-A: Currently, GPT Researcher is optimized for OpenAI's models. Support for other models can be found [here](../gpt-researcher/llms/llms.md).
+**Q: Can I use RepIntel A with other language models?**
+A: Currently, RepIntel A is optimized for OpenAI's models. Support for other models can be found [here](../RepIntel_AI/llms/llms.md).
 
-**Q: How does GPT Researcher handle conflicting information between local and web sources?**
+**Q: How does RepIntel A handle conflicting information between local and web sources?**
 A: The system attempts to reconcile differences by providing context and noting discrepancies in the final report. It prioritizes more recent or authoritative sources when conflicts arise.
 
 **Q: Is my local data sent to external servers during the research process?**
 A: No, your local documents are processed on your machine. Only the generated queries and synthesized information (not raw data) are sent to external services for web research.
 
-For more information and updates, please visit the [GPT Researcher GitHub repository](https://github.com/assafelovic/gpt-researcher).
+For more information and updates, please visit the [RepIntel A GitHub repository](https://github.com/assafelovic/RepIntel_AI).

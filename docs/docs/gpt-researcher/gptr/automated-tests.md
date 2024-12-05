@@ -2,7 +2,7 @@
 
 ## Automated Testing with Github Actions
 
-This repository contains the code for the automated testing of the GPT-Researcher Repo using Github Actions. 
+This repository contains the code for the automated testing of the RepIntel_AI Repo using Github Actions. 
 
 The tests are triggered in a docker container which runs the tests via the `pytest` module.
 
@@ -13,7 +13,7 @@ You can run the tests:
 ### Via a docker command
 
 ```bash
-docker-compose --profile test run --rm gpt-researcher-tests
+docker-compose --profile test run --rm RepIntel_AI-tests
 ```
 
 ### Via a Github Action

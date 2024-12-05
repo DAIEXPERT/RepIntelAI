@@ -2,13 +2,13 @@
 
 ## Introduction
 
-In this section, we will discuss how to query the GPTR backend server. The GPTR backend server is a Python server that runs the GPTR Python package. The server listens for WebSocket connections and processes incoming messages to generate reports, streaming back logs and results to the client.
+In this section, we will discuss how to query the repintelai backend server. The repintelai backend server is a Python server that runs the repintelai Python package. The server listens for WebSocket connections and processes incoming messages to generate reports, streaming back logs and results to the client.
 
-An example WebSocket client is implemented in the `gptr-webhook.js` file below.
+An example WebSocket client is implemented in the `repintelai-webhook.js` file below.
 
-This function sends a Webhook Message to the GPTR Python backend running on localhost:8000, but this example can also be modified to query a [GPTR Server hosted on Linux](https://docs.gptr.dev/docs/gpt-researcher/getting-started/linux-deployment).
+This function sends a Webhook Message to the repintelai Python backend running on localhost:8000, but this example can also be modified to query a [repintelai Server hosted on Linux](https://docs.repintelai.dev/docs/RepIntel_AI/getting-started/linux-deployment).
 
-// gptr-webhook.js
+// repintelai-webhook.js
 
 ```javascript
 
@@ -67,7 +67,7 @@ async function sendWebhookMessage(message) {
       report_source: 'web',
       tone: 'Objective',
       headers: {},
-      repo_name: 'elishakay/gpt-researcher'
+      repo_name: 'elishakay/RepIntel_AI'
     };
 
     const payload = "start " + JSON.stringify(data);
@@ -96,10 +96,10 @@ module.exports = {
 And here's how you can leverage this helper function:
 
 ```javascript
-const { sendWebhookMessage } = require('./gptr-webhook');
+const { sendWebhookMessage } = require('./repintelai-webhook');
 
 async function main() {
-  const message = 'How do I get started with GPT-Researcher Websockets?';
+  const message = 'How do I get started with RepIntel_AI Websockets?';
   const response = await sendWebhookMessage(message);
   console.log('Response:', response);
 }

@@ -16,7 +16,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/gpt-researcher/getting-started/getting-started">
+            to="/docs/RepIntel_AI/getting-started/getting-started">
             Getting Started - 5 min ⏱️
           </Link>
         </div>
@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <Layout
       title={`Documentation`}
-      description="GPT Researcher is the leading autonomous agent designed for comprehensive online research on a variety of tasks.">
+      description="RepIntel A is the leading autonomous agent designed for comprehensive online research on a variety of tasks.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

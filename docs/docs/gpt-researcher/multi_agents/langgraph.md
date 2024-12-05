@@ -15,7 +15,7 @@ Please note: This example uses the OpenAI API only for optimized performance.
 The research team is made up of 7 AI agents:
 - **Human** - The human in the loop that oversees the process and provides feedback to the agents.
 - **Chief Editor** - Oversees the research process and manages the team. This is the "master" agent that coordinates the other agents using Langgraph.
-- **Researcher** (gpt-researcher) - A specialized autonomous agent that conducts in depth research on a given topic.
+- **Researcher** (RepIntel_AI) - A specialized autonomous agent that conducts in depth research on a given topic.
 - **Editor** - Responsible for planning the research outline and structure.
 - **Reviewer** - Validates the correctness of the research results given a set of criteria.
 - **Revisor** - Revises the research results based on the feedback from the reviewer.
@@ -32,16 +32,16 @@ Generally, the process is based on the following stages:
 
 ### Architecture
 <div align="center">
-<img align="center" height="600" src="https://cowriter-images.s3.amazonaws.com/multi-agents-gptr.png"></img>
+<img align="center" height="600" src="https://cowriter-images.s3.amazonaws.com/multi-agents-repintelai.png"></img>
 </div>
 <br clear="all"/>
 
 ### Steps
 More specifically (as seen in the architecture diagram) the process is as follows:
-- Browser (gpt-researcher) - Browses the internet for initial research based on the given research task.
+- Browser (RepIntel_AI) - Browses the internet for initial research based on the given research task.
 - Editor - Plans the report outline and structure based on the initial research.
 - For each outline topic (in parallel):
-  - Researcher (gpt-researcher) - Runs an in depth research on the subtopics and writes a draft.
+  - Researcher (RepIntel_AI) - Runs an in depth research on the subtopics and writes a draft.
   - Reviewer - Validates the correctness of the draft given a set of criteria and provides feedback.
   - Revisor - Revises the draft until it is satisfactory based on the reviewer feedback.
 - Writer - Compiles and writes the final report including an introduction, conclusion and references section from the given research findings.
@@ -112,15 +112,15 @@ From there, see documentation [here](https://github.com/langchain-ai/langgraph-e
 The React app (located in `frontend` directory) is our Frontend 2.0 which we hope will enable us to display the robustness of the backend on the frontend, as well.
 
 It comes with loads of added features, such as: 
- - a drag-n-drop user interface for uploading and deleting files to be used as local documents by GPTResearcher.
- - a GUI for setting your GPTR environment variables.
+ - a drag-n-drop user interface for uploading and deleting files to be used as local documents by repintelaiesearcher.
+ - a GUI for setting your repintelai environment variables.
  - the ability to trigger the multi_agents flow via the Backend Module or Langgraph Cloud Host (currently in closed beta).
  - stability fixes
  - and more coming soon!
 
 ### Run the NextJS React App with Docker
 
-> **Step 1** - [Install Docker](https://docs.gptr.dev/docs/gpt-researcher/getting-started/getting-started-with-docker)
+> **Step 1** - [Install Docker](https://docs.repintelai.dev/docs/RepIntel_AI/getting-started/getting-started-with-docker)
 
 > **Step 2** - Clone the '.env.example' file, add your API Keys to the cloned file and save the file as '.env'
 

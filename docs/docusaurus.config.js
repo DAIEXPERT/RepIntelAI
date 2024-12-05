@@ -3,23 +3,22 @@ const math = require('remark-math');
 const katex = require('rehype-katex');
 
 module.exports = {
-  title: 'GPT Researcher',
-  tagline: 'The leading autonomous AI research agent',
-  url: 'https://docs.gptr.dev',
+  title: 'Repintel',
+  tagline: 'The leading autonomous AI intelligence agent',
+  url: 'https://docs.repintel.dev',
   baseUrl: '/',
   onBrokenLinks: 'ignore',
-  //deploymentBranch: 'master',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/gptr-logo.png',
+  favicon: 'img/repintel-logo.png',
   organizationName: 'assafelovic',
   trailingSlash: false,
-  projectName: 'gpt-researcher',
+  projectName: 'repintel',
   themeConfig: {
     navbar: {
-      title: 'GPT Researcher',
+      title: 'Repintel',
       logo: {
-        alt: 'GPT Researcher',
-        src: 'img/gptr-logo.png',
+        alt: 'Repintel',
+        src: 'img/repintel-logo.png',
       },
       items: [
         {
@@ -28,7 +27,6 @@ module.exports = {
           position: 'left',
           label: 'Docs',
         },
-
         {to: 'blog', label: 'Blog', position: 'left'},
         {
           type: 'doc',
@@ -37,12 +35,12 @@ module.exports = {
           label: 'FAQ',
         },
         {
-            href: 'mailto:assaf.elovic@gmail.com',
-            position: 'left',
-            label: 'Contact',
+          href: 'mailto:assaf.elovic@gmail.com',
+          position: 'left',
+          label: 'Contact',
         },
         {
-          href: 'https://github.com/assafelovic/gpt-researcher',
+          href: 'https://github.com/assafelovic/repintel',
           label: 'GitHub',
           position: 'right',
         },
@@ -73,16 +71,16 @@ module.exports = {
           items: [
             {
               label: 'Homepage',
-              href: 'https://gptr.dev',
+              href: 'https://repintel.dev',
             },
             {
               label: 'Contact',
-              href: 'mailto:assafelovic@gmail.com',
+              href: 'mailto:assaf.elovic@gmail.com',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} GPT Researcher.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Repintel.`,
     },
   },
   presets: [
@@ -91,9 +89,8 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
           editUrl:
-            'https://github.com/assafelovic/gpt-researcher/tree/master/docs',
+            'https://github.com/assafelovic/repintel/tree/master/docs',
           remarkPlugins: [math],
           rehypePlugins: [katex],
         },
@@ -105,26 +102,18 @@ module.exports = {
   ],
   stylesheets: [
     {
-        href: "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css",
-        integrity: "sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc",
-        crossorigin: "anonymous",
+      href: "https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css",
+      integrity: "sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc",
+      crossorigin: "anonymous",
     },
   ],
 
   plugins: [
-    // ... Your other plugins.
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
-        // ... Your options.
-        // `hashed` is recommended as long-term-cache of index file is possible.
         hashed: true,
-        blogDir:"./blog/"
-        // For Docs using Chinese, The `language` is recommended to set to:
-        // ```
-        // language: ["en", "zh"],
-        // ```
-        // When applying `zh` in language, please install `nodejieba` in your project.
+        blogDir: "./blog/"
       },
     ],
   ],

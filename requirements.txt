@@ -14,7 +14,7 @@ langchain_community>=0.2,<0.4
 langchain-openai>=0.1,<0.4
 langgraph
 tiktoken
-gpt-researcher
+RepIntel_AI
 arxiv
 PyMuPDF
 requests

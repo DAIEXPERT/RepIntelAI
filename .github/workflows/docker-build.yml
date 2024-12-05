@@ -1,5 +1,5 @@
-name: GPTR tests
-run-name: ${{ github.actor }} ran the GPTR tests flow
+name: repintelai tests
+run-name: ${{ github.actor }} ran the repintelai tests flow
 permissions:
   contents: read
   pull-requests: write
@@ -33,7 +33,7 @@ jobs:
       #   uses: docker/build-push-action@v4
       #   with:
       #     push: false
-      #     tags: gptresearcher/gpt-researcher:latest
+      #     tags: RepintelAI/RepintelAI:latest
       #     file: Dockerfile          
 
       - name: Set up Docker Compose
@@ -42,4 +42,4 @@ jobs:
           sudo chmod +x /usr/local/bin/docker-compose
       - name: Run tests with Docker Compose
         run: |
-          docker-compose --profile test run --rm gpt-researcher-tests
+          docker-compose --profile test run --rm RepIntel_AI-tests

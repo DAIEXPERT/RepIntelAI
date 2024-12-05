@@ -5,8 +5,8 @@
 > **Step 1** - Download the project and navigate to its directory
 
 ```bash
-$ git clone https://github.com/assafelovic/gpt-researcher.git
-$ cd gpt-researcher
+$ git clone https://github.com/assafelovic/RepIntel_AI.git
+$ cd RepIntel_AI
 ```
 
 > **Step 3** - Set up API keys using two methods: exporting them directly or storing them in a `.env` file.
@@ -18,9 +18,9 @@ export OPENAI_API_KEY={Your OpenAI API Key here}
 export TAVILY_API_KEY={Your Tavily API Key here}
 ```
 
-For a more permanent setup, create a `.env` file in the current `gpt-researcher` directory and input the env vars (without `export`).
+For a more permanent setup, create a `.env` file in the current `RepIntel_AI` directory and input the env vars (without `export`).
 
-- For LLM provider, we recommend **[OpenAI GPT](https://platform.openai.com/docs/guides/gpt)**, but you can use any other LLM model (including open sources). To learn how to change the LLM model, please refer to the [documentation](https://docs.gptr.dev/docs/gpt-researcher/llms/llms) page. 
+- For LLM provider, we recommend **[OpenAI GPT](https://platform.openai.com/docs/guides/gpt)**, but you can use any other LLM model (including open sources). To learn how to change the LLM model, please refer to the [documentation](https://docs.repintelai.dev/docs/RepIntel_AI/llms/llms) page. 
 - For web search API, we recommend **[Tavily Search API](https://app.tavily.com)**, but you can also refer to other search APIs of your choice by changing the search provider in config/config.py to `duckduckgo`, `google`, `bing`, `searchapi`, `serper`, `searx` and more. Then add the corresponding env API key.
 
 ## Quickstart

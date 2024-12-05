@@ -9,7 +9,7 @@ exclude_packages = [
     "fastapi.*",
     "uvicorn",
     "jinja2",
-    "gpt-researcher",
+    "RepIntel_AI",
     "langgraph"
 ]
 
@@ -20,16 +20,16 @@ with open("requirements.txt", "r") as f:
     reqs = [line.strip() for line in f if not any(pkg in line for pkg in exclude_packages)]
 
 setup(
-    name="gpt-researcher",
+    name="RepIntel_AI",
     version=LATEST_VERSION,
-    description="GPT Researcher is an autonomous agent designed for comprehensive web research on any task",
-    package_dir={'gpt_researcher': 'gpt_researcher'},
+    description="the AI-based reputation intelligence system by Magolnick Global. Gain insights into your online presence, analyze consumer sentiment, and uncover essential trends to help you manage and grow your brand.",
+    package_dir={'AI_core': 'AI_core'},
     packages=find_packages(exclude=exclude_packages),
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/assafelovic/gpt-researcher",
-    author="Assaf Elovic",
-    author_email="assaf.elovic@gmail.com",
+    url="https://www.magolnick.com/repintel",
+    author="Mike Magolnick",
+    author_email="mike@magolnick.com",
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",

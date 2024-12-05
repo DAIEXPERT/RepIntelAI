@@ -1,8 +1,9 @@
 # Simple Run
 
 ### Run PIP Package
+
 ```python
-from gpt_researcher import GPTResearcher
+from AI_core import RepintelAI
 import asyncio
 
 
@@ -17,12 +18,12 @@ async def main():
     report_type = "research_report"
 
     # Initialize the researcher
-    researcher = GPTResearcher(query=query, report_type=report_type, config_path=None)
+    researcher = RepintelAI(query=query, report_type=report_type, config_path=None)
     # Conduct research on the given query
     await researcher.conduct_research()
     # Write the report
     report = await researcher.write_report()
-    
+
     return report
 
 
