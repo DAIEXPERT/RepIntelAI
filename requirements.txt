@@ -7,14 +7,13 @@ pyyaml
 uvicorn
 pydantic
 fastapi
-python-multipart
+#python-multipart
 markdown
 langchain>=0.2,<0.4
 langchain_community>=0.2,<0.4
 langchain-openai>=0.1,<0.4
 langgraph
 tiktoken
-RepIntel_AI
 arxiv
 PyMuPDF
 requests
