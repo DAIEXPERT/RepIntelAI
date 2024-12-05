@@ -7,7 +7,7 @@ pyyaml
 uvicorn
 pydantic
 fastapi
-#python-multipart
+python-multipart
 markdown
 langchain>=0.2,<0.4
 langchain_community>=0.2,<0.4
