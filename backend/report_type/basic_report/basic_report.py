@@ -1,7 +1,7 @@
 from fastapi import WebSocket
 from typing import Any
 
-from gpt_researcher import GPTResearcher
+from AI_core import RepintelAI
 
 
 class BasicReport:
@@ -27,7 +27,7 @@ class BasicReport:
 
     async def run(self):
         # Initialize researcher
-        researcher = GPTResearcher(
+        researcher = RepintelAI(
             query=self.query,
             report_type=self.report_type,
             report_source=self.report_source,

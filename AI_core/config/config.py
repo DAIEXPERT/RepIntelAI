@@ -8,7 +8,7 @@ from ..retrievers.utils import get_all_retriever_names
 
 
 class Config:
-    """Config class for GPT Researcher."""
+    """Config class for RepIntel AI."""
 
     CONFIG_DIR = os.path.join(os.path.dirname(__file__), "variables")
 
@@ -150,7 +150,7 @@ class Config:
     @staticmethod
     def parse_llm(llm_str: str | None) -> tuple[str | None, str | None]:
         """Parse llm string into (llm_provider, llm_model)."""
-        from gpt_researcher.llm_provider.generic.base import _SUPPORTED_PROVIDERS
+        from AI_core.llm_provider.generic.base import _SUPPORTED_PROVIDERS
 
         if llm_str is None:
             return None, None
@@ -170,7 +170,7 @@ class Config:
     @staticmethod
     def parse_embedding(embedding_str: str | None) -> tuple[str | None, str | None]:
         """Parse embedding string into (embedding_provider, embedding_model)."""
-        from gpt_researcher.memory.embeddings import _SUPPORTED_PROVIDERS
+        from AI_core.memory.embeddings import _SUPPORTED_PROVIDERS
 
         if embedding_str is None:
             return None, None

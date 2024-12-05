@@ -1,5 +1,5 @@
 langgraph
-gpt_researcher
+AI_core
 langgraph-cli
 python-dotenv
 weasyprint

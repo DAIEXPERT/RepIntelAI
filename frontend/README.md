@@ -1,6 +1,6 @@
 # Frontend Application
 
-This frontend project aims to enhance the user experience of GPT-Researcher, providing an intuitive and efficient interface for automated research. It offers two deployment options to suit different needs and environments.
+This frontend project aims to enhance the user experience of RepIntel_AI, providing an intuitive and efficient interface for automated research. It offers two deployment options to suit different needs and environments.
 
 ## Option 1: Static Frontend (FastAPI)
 
@@ -25,7 +25,7 @@ A lightweight solution using FastAPI to serve static files.
 3. Access at `http://localhost:8000`
 
 #### Demo
-https://github.com/assafelovic/gpt-researcher/assets/13554167/dd6cf08f-b31e-40c6-9907-1915f52a7110
+https://github.com/assafelovic/RepIntel_AI/assets/13554167/dd6cf08f-b31e-40c6-9907-1915f52a7110
 
 ## Option 2: NextJS Frontend
 
@@ -74,7 +74,7 @@ For production, NextJS is recommended.
 
 ## Frontend Features
 
-Our frontend enhances GPT-Researcher by providing:
+Our frontend enhances RepIntel_AI by providing:
 
 1. Intuitive Research Interface: Streamlined input for research queries.
 2. Real-time Progress Tracking: Visual feedback on ongoing research tasks.
@@ -82,4 +82,4 @@ Our frontend enhances GPT-Researcher by providing:
 4. Customizable Settings: Adjust research parameters to suit specific needs.
 5. Responsive Design: Optimal experience across various devices.
 
-These features aim to make the research process more efficient and user-friendly, complementing GPT-Researcher's powerful agent capabilities.
+These features aim to make the research process more efficient and user-friendly, complementing RepIntel_AI's powerful agent capabilities.

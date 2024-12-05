@@ -2,7 +2,7 @@ import warnings
 from datetime import date, datetime, timezone
 
 from .utils.enum import ReportSource, ReportType, Tone
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 
 def generate_search_queries_prompt(
@@ -32,22 +32,21 @@ def generate_search_queries_prompt(
         task = question
 
     context_prompt = f"""
-You are a seasoned research assistant tasked with generating search queries to find relevant information for the following task: "{task}".
+You are an AI-driven reputation intelligence assistant specializing in providing businesses with insights into their online reputation, brand sentiment, industry trends, and competitive analysis for the following task: "{task}".
 Context: {context}
 
-Use this context to inform and refine your search queries. The context provides real-time web information that can help you generate more specific and relevant queries. Consider any current events, recent developments, or specific details mentioned in the context that could enhance the search queries.
+Use this context to inform and refine your search queries. The context provides real-time web information that can help generate precise and actionable queries. Focus on relevant keywords and events that align with RepIntel’s ability to monitor brand sentiment, consumer opinions, competitor analysis, and reputation metrics. Aim to gather insights that could reveal public perception, brand strengths and weaknesses, consumer needs, or trending topics in the industry.
 """ if context else ""
 
     dynamic_example = ", ".join([f'"query {i+1}"' for i in range(max_iterations)])
 
-    return f"""Write {max_iterations} google search queries to search online that form an objective opinion from the following task: "{task}"
+    return f"""Generate {max_iterations} online search queries designed to gather reputation insights from the following task: "{task}"
 
 Assume the current date is {datetime.now(timezone.utc).strftime('%B %d, %Y')} if required.
 
 {context_prompt}
-You must respond with a list of strings in the following format: [{dynamic_example}].
-The response should contain ONLY the list.
-"""
+Respond with a list of strings in the following format: [{dynamic_example}].
+The response should contain ONLY the list."""
 
 
 def generate_report_prompt(
@@ -56,114 +55,170 @@ def generate_report_prompt(
     report_source: str,
     report_format="apa",
     total_words=1000,
-    tone=None,
+    tone: Optional[str] = None,
 ):
     """Generates the report prompt for the given question and research summary.
-    Args: question (str): The question to generate the report prompt for
-            research_summary (str): The research summary to generate the report prompt for
-    Returns: str: The report prompt for the given question and research summary
+    Args:
+        question (str): The question to generate the report prompt for
+        context (str): The context or research summary relevant to the report prompt
+        report_source (str): Source of the report (Web, Document, etc.)
+        report_format (str): Format of the report (APA, MLA, etc.)
+        total_words (int): Target word count for the report
+        tone (str): Desired tone of the report (optional)
+
+    Returns:
+        str: The report prompt tailored for REPINTEL’s reputation intelligence goals
     """
 
     reference_prompt = ""
     if report_source == ReportSource.Web.value:
         reference_prompt = f"""
-You MUST write all used source urls at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each.
-Every url should be hyperlinked: [url website](url)
-Additionally, you MUST include hyperlinks to the relevant URLs wherever they are referenced in the report: 
+You MUST include all used source URLs at the end of the report as references, ensuring no duplicates, with only one reference per unique source.
+Every URL should be hyperlinked: [url website](url)
+Additionally, hyperlink relevant URLs wherever they are referenced within the report: 
 
-eg: Author, A. A. (Year, Month Date). Title of web page. Website Name. [url website](url)
+Example: Author, A. A. (Year, Month Date). Title of web page. Website Name. [url website](url)
 """
     else:
         reference_prompt = f"""
-You MUST write all used source document names at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each."
+You MUST include all used source document names at the end of the report as references, ensuring no duplicates, with only one reference per unique source.
 """
 
-    tone_prompt = f"Write the report in a {tone.value} tone." if tone else ""
+    tone_prompt = f"Write the report in a {tone} tone." if tone else ""
 
     return f"""
 Information: "{context}"
 ---
-Using the above information, answer the following query or task: "{question}" in a detailed report --
-The report should focus on the answer to the query, should be well structured, informative, 
-in-depth, and comprehensive, with facts and numbers if available and at least {total_words} words.
-You should strive to write the report as long as you can using all relevant and necessary information provided.
+Using the above information, answer the following query or task: "{question}" in a detailed report focused on reputation insights, brand sentiment, or industry trends.
 
-Please follow all of the following guidelines in your report:
-- You MUST determine your own concrete and valid opinion based on the given information. Do NOT defer to general and meaningless conclusions.
-- You MUST write the report with markdown syntax and {report_format} format.
-- You MUST prioritize the relevance, reliability, and significance of the sources you use. Choose trusted sources over less reliable ones.
-- You must also prioritize new articles over older articles if the source can be trusted.
-- Use in-text citation references in {report_format} format and make it with markdown hyperlink placed at the end of the sentence or paragraph that references them like this: ([in-text citation](url)).
-- Don't forget to add a reference list at the end of the report in {report_format} format and full url links without hyperlinks.
+The report should:
+- Thoroughly address the question with structured, data-driven insights,
+- Be well-organized, informative, and grounded in facts and metrics where possible,
+- Aim to be comprehensive, at least {total_words} words long, and provide actionable recommendations for reputation management.
+
+Please follow these guidelines:
+- Derive a concrete and valid conclusion based on the given information, rather than relying on general statements.
+- Write the report using markdown syntax and in {report_format} format.
+- Prioritize source relevance, reliability, and significance, choosing trusted sources whenever possible.
+- Favor recent, trusted sources over older references if relevant.
+- Include in-text citations in {report_format} format, using markdown hyperlinks placed at the end of the sentence or paragraph that references them, like this: ([in-text citation](url)).
+- Remember to add a reference list at the end of the report in {report_format} format, with full URLs without hyperlinks.
 - {reference_prompt}
 - {tone_prompt}
 
-Please do your best, this is very important to my career.
-Assume that the current date is {date.today()}.
+This report is highly important for strategic decision-making regarding brand reputation and growth.
+Assume the current date is {date.today()}.
 """
 
 
 def generate_resource_report_prompt(
-    question, context, report_source: str, report_format="apa", tone=None, total_words=1000
+    question: str, 
+    context: str, 
+    report_source: str, 
+    report_format="apa", 
+    tone=None, 
+    total_words=1000
 ):
-    """Generates the resource report prompt for the given question and research summary.
+    """Generates the resource report prompt tailored for REPINTEL’s reputation intelligence needs.
 
     Args:
-        question (str): The question to generate the resource report prompt for.
-        context (str): The research summary to generate the resource report prompt for.
+        question (str): The question or topic for which to generate the resource report prompt.
+        context (str): Relevant background or context for generating the resource report prompt.
+        report_source (str): Source type (e.g., Web or Document)
+        report_format (str): Citation format (e.g., APA, MLA)
+        tone (str): Desired tone for the report
+        total_words (int): Minimum length for the report
 
     Returns:
-        str: The resource report prompt for the given question and research summary.
+        str: A detailed resource report prompt for analyzing recommended sources in reputation intelligence.
     """
 
     reference_prompt = ""
     if report_source == ReportSource.Web.value:
-        reference_prompt = f"""
-            You MUST include all relevant source urls.
-            Every url should be hyperlinked: [url website](url)
+        reference_prompt = """
+            You MUST include all relevant source URLs at the end of the report as references. 
+            Each URL should be hyperlinked: [url website](url)
+            Avoid duplicate URLs and include only one unique reference per source.
             """
     else:
-        reference_prompt = f"""
-            You MUST write all used source document names at the end of the report as references, and make sure to not add duplicated sources, but only one reference for each."
+        reference_prompt = """
+            You MUST include all used source document names at the end of the report as references, 
+            ensuring no duplicates, with only one reference per unique source.
         """
 
+    tone_prompt = f"Write the report in a {tone} tone." if tone else ""
+
     return (
-        f'"""{context}"""\n\nBased on the above information, generate a bibliography recommendation report for the following'
-        f' question or topic: "{question}". The report should provide a detailed analysis of each recommended resource,'
-        " explaining how each source can contribute to finding answers to the research question.\n"
-        "Focus on the relevance, reliability, and significance of each source.\n"
-        "Ensure that the report is well-structured, informative, in-depth, and follows Markdown syntax.\n"
-        "Include relevant facts, figures, and numbers whenever available.\n"
-        f"The report should have a minimum length of {total_words} words.\n"
-        "You MUST include all relevant source urls."
-        "Every url should be hyperlinked: [url website](url)"
-        f"{reference_prompt}"
+        f'"""{context}"""\n\nBased on the above information, generate a detailed resource report for the following '
+        f'question or topic: "{question}". The report should provide a thorough analysis of each recommended resource, '
+        "explaining how each source can support REPINTEL’s reputation intelligence goals. Focus on evaluating each source for "
+        "its relevance, reliability, and potential insights on brand sentiment, competitive positioning, and industry trends.\n"
+        "Ensure that the report is well-structured, comprehensive, and follows Markdown syntax.\n"
+        f"The report should have a minimum length of {total_words} words and should include relevant facts, figures, "
+        "and insights to provide a strong foundation for reputation management decisions.\n"
+        f"{reference_prompt}\n"
+        f"{tone_prompt}\n"
     )
 
 
 def generate_custom_report_prompt(
-    query_prompt, context, report_source: str, report_format="apa", tone=None, total_words=1000
+    query_prompt: str, 
+    context: str, 
+    report_source: str, 
+    report_format="apa", 
+    tone=None, 
+    total_words=1000
 ):
-    return f'"{context}"\n\n{query_prompt}'
+    """Generates a custom report prompt specific to REPINTEL’s needs for intelligence on brand reputation and competitive analysis.
+
+    Args:
+        query_prompt (str): The prompt or question for generating the custom report
+        context (str): Background or context relevant to REPINTEL’s needs for reputation intelligence
+        report_source (str): Source type (e.g., Web, Document)
+        report_format (str): Desired citation format (e.g., APA, MLA)
+        tone (str): Desired tone for the report
+        total_words (int): Minimum length for the report
+
+    Returns:
+        str: A customized report prompt for the given query and context, structured for REPINTEL’s goals.
+    """
+    return (
+        f'"{context}"\n\n{query_prompt} in a comprehensive report format, following {report_format} citation style '
+        f"and integrating insights on brand sentiment, competitive positioning, and market perception for REPINTEL's "
+        f"reputation intelligence strategy. The report should be detailed, minimum {total_words} words, and written "
+        f"{f'in a {tone} tone' if tone else 'in a formal, informative tone'}.\n"
+    )
 
 
 def generate_outline_report_prompt(
-    question, context, report_source: str, report_format="apa", tone=None,  total_words=1000
+    question: str, 
+    context: str, 
+    report_source: str, 
+    report_format="apa", 
+    tone=None,  
+    total_words=1000
 ):
-    """Generates the outline report prompt for the given question and research summary.
-    Args: question (str): The question to generate the outline report prompt for
-            research_summary (str): The research summary to generate the outline report prompt for
-    Returns: str: The outline report prompt for the given question and research summary
+    """Generates the outline report prompt, tailored for REPINTEL's reputation intelligence reports.
+
+    Args:
+        question (str): The main question or topic for the outline report
+        context (str): Relevant background information for framing the report outline
+        report_source (str): Source type (e.g., Web or Document)
+        report_format (str): Desired citation format (e.g., APA, MLA)
+        tone (str): Desired tone for the report
+        total_words (int): Minimum word length for the report
+
+    Returns:
+        str: A structured prompt for generating a report outline focused on REPINTEL’s reputation intelligence goals.
     """
-
     return (
-        f'"""{context}""" Using the above information, generate an outline for a research report in Markdown syntax'
-        f' for the following question or topic: "{question}". The outline should provide a well-structured framework'
-        " for the research report, including the main sections, subsections, and key points to be covered."
-        f" The research report should be detailed, informative, in-depth, and a minimum of {total_words} words."
-        " Use appropriate Markdown syntax to format the outline and ensure readability."
+        f'"""{context}"""\n\nUsing the above information, create an outline for a reputation intelligence research report '
+        f'in Markdown syntax for the following topic: "{question}". The outline should provide a structured framework, '
+        "highlighting main sections, relevant subsections, and key points on brand reputation, competitive sentiment, "
+        f"and industry insights to be covered. The report should be thorough, at least {total_words} words, and follow "
+        f"{report_format} format guidelines. Use clear Markdown syntax to ensure readability and adherence to REPINTEL’s "
+        "informative, data-driven style."
     )
-
 
 def get_report_by_type(report_type: str):
     report_type_mapping = {
@@ -179,45 +234,60 @@ def get_report_by_type(report_type: str):
 def auto_agent_instructions():
     return """
 This task involves researching a given topic, regardless of its complexity or the availability of a definitive answer. The research is conducted by a specific server, defined by its type and role, with each server requiring distinct instructions.
-Agent
+
+Agent:
 The server is determined by the field of the topic and the specific name of the server that could be utilized to research the topic provided. Agents are categorized by their area of expertise, and each server type is associated with a corresponding emoji.
 
-examples:
-task: "should I invest in apple stocks?"
+Examples:
+task: "Bob Smith reputation score"
 response: 
 {
-    "server": "💰 Finance Agent",
-    "agent_role_prompt: "You are a seasoned finance analyst AI assistant. Your primary goal is to compose comprehensive, astute, impartial, and methodically arranged financial reports based on provided data and trends."
+    "server": "🔍 Reputation Analysis Agent",
+    "agent_role_prompt": "You are an experienced reputation analysis AI assistant. Your main role is to provide a comprehensive, accurate, and well-structured reputation assessment, including sentiment analysis, for the subject in question."
 }
-task: "could reselling sneakers become profitable?"
+task: "I need a sentiment report for Bob Smith"
 response: 
-{ 
-    "server":  "📈 Business Analyst Agent",
-    "agent_role_prompt": "You are an experienced AI business analyst assistant. Your main objective is to produce comprehensive, insightful, impartial, and systematically structured business reports based on provided business data, market trends, and strategic analysis."
+{
+    "server": "📊 Sentiment Analysis Agent",
+    "agent_role_prompt": "You are a skilled AI sentiment analysis assistant. Your goal is to generate a thorough, balanced, and clear sentiment report based on the subject's recent activity, mentions, and media coverage."
 }
-task: "what are the most interesting sites in Tel Aviv?"
+task: "What is Bob Smith’s reputation score?"
 response:
 {
-    "server:  "🌍 Travel Agent",
-    "agent_role_prompt": "You are a world-travelled AI tour guide assistant. Your main purpose is to draft engaging, insightful, unbiased, and well-structured travel reports on given locations, including history, attractions, and cultural insights."
+    "server": "🧭 Reputation Scoring Agent",
+    "agent_role_prompt": "You are a reputation scoring specialist AI assistant. Your focus is on calculating, interpreting, and presenting a precise reputation score for the subject, taking into account recent feedback and public sentiment data."
+}
+task: "I need a full reputation report for Bob Smith"
+response:
+{
+    "server": "📜 Comprehensive Reputation Agent",
+    "agent_role_prompt": "You are a detailed-oriented AI assistant specializing in reputation reporting. Your task is to compile an in-depth and unbiased report covering the subject’s reputation trends, key sentiment indicators, and historical data."
+}
+task: "List all of the negative results for Bob Smith"
+response:
+{
+    "server": "🚨 Negative Sentiment Agent",
+    "agent_role_prompt": "You are a critical analysis AI assistant focused on identifying and summarizing all negative mentions related to the subject. Your main goal is to deliver a clear, organized list of all negative results while analyzing the context and impact of each mention."
 }
 """
 
+def generate_summary_prompt(query: str, data: str):
+    """Generates a summary prompt tailored for reputation intelligence and competitive analysis objectives.
 
-def generate_summary_prompt(query, data):
-    """Generates the summary prompt for the given question and text.
-    Args: question (str): The question to generate the summary prompt for
-            text (str): The text to generate the summary prompt for
-    Returns: str: The summary prompt for the given question and text
+    Args:
+        query (str): The specific question or task to guide the summary.
+        data (str): The data or text to summarize.
+
+    Returns:
+        str: The summary prompt adapted for intelligence needs, including key details and insights.
     """
 
     return (
-        f'{data}\n Using the above text, summarize it based on the following task or query: "{query}".\n If the '
-        f"query cannot be answered using the text, YOU MUST summarize the text in short.\n Include all factual "
-        f"information such as numbers, stats, quotes, etc if available. "
+        f'{data}\n\nUsing the above information, summarize the content based on the following task: "{query}".\n'
+        f"If the query cannot be answered directly from the data, YOU MUST provide a brief but comprehensive summary.\n"
+        f"Ensure the summary includes any factual details relevant to brand sentiment, competitive analysis, market perception, "
+        f"and reputation trends, such as statistics, quotes, or significant insights, if available."
     )
-
-
 ################################################################################################
 
 # DETAILED REPORT PROMPTS
@@ -395,6 +465,7 @@ def generate_report_conclusion(query: str, report_content: str) -> str:
     """
 
     return prompt
+
 
 
 report_type_mapping = {

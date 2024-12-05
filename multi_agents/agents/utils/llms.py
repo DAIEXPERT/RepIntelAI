@@ -2,8 +2,8 @@ import json5 as json
 import json_repair
 from langchain_community.adapters.openai import convert_openai_messages
 
-from gpt_researcher.config.config import Config
-from gpt_researcher.utils.llm import create_chat_completion
+from AI_core.config.config import Config
+from AI_core.utils.llm import create_chat_completion
 
 from loguru import logger
 

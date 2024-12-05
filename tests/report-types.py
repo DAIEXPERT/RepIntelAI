@@ -1,7 +1,7 @@
 import os
 import asyncio
 import pytest
-from gpt_researcher import GPTResearcher
+from AI_core import RepintelAI
 
 # Define the report types to test
 report_types = [
@@ -18,13 +18,13 @@ output_dir = "./outputs"
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("report_type", report_types)
-async def test_gpt_researcher(report_type):
+async def test_AI_core(report_type):
     # Ensure the output directory exists
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
         
-    # Create an instance of GPTResearcher
-    researcher = GPTResearcher(query=query, report_type=report_type)
+    # Create an instance of RepIntelAI
+    researcher = RepintelAI(query=query, report_type=report_type)
     
     # Conduct research and write the report
     await researcher.conduct_research()

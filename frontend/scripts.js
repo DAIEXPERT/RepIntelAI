@@ -1,4 +1,4 @@
-const GPTResearcher = (() => {
+const RepIntelAI = (() => {
   const init = () => {
     // Not sure, but I think it would be better to add event handlers here instead of in the HTML
     //document.getElementById("startResearch").addEventListener("click", startResearch);

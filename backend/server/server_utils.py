@@ -5,7 +5,7 @@ import time
 import shutil
 from typing import Dict, List, Any
 from fastapi.responses import JSONResponse
-from gpt_researcher.document.document import DocumentLoader
+from AI_core.document.document import DocumentLoader
 # Add this import
 from backend.utils import write_md_to_pdf, write_md_to_word, write_text_to_md
 

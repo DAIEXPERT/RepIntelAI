@@ -1,8 +1,7 @@
 import os
-import asyncio
 import pytest
 # Ensure this path is correct
-from gpt_researcher.master.agent import GPTResearcher
+from AI_core import RepintelAI
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -25,13 +24,13 @@ output_dir = "./outputs"
 
 @pytest.mark.asyncio
 @pytest.mark.parametrize("report_type", report_types)
-async def test_gpt_researcher(report_type):
+async def test_AI_core(report_type):
     # Ensure the output directory exists
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
-    # Create an instance of GPTResearcher with report_source set to "documents"
-    researcher = GPTResearcher(
+    # Create an instance of RepintelAI with report_source set to "documents"
+    researcher = RepintelAI(
         query=query, report_type=report_type, report_source="documents")
 
     # Conduct research and write the report

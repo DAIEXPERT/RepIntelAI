@@ -23,7 +23,7 @@ from .actions import (
 )
 
 
-class GPTResearcher:
+class RepintelAI:
     def __init__(
         self,
         query: str,

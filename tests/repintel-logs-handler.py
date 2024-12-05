@@ -1,6 +1,6 @@
 from typing import Dict, Any
 import asyncio
-from gpt_researcher import GPTResearcher
+from AI_core import RepintelAI
 
 class CustomLogsHandler:
     """A custom Logs handler class to handle JSON data."""
@@ -24,7 +24,7 @@ async def run():
     # Initialize researcher with a custom WebSocket
     custom_logs_handler = CustomLogsHandler()
 
-    researcher = GPTResearcher(
+    researcher = RepintelAI(
         query=query,
         report_type=report_type,
         report_source=report_source,

@@ -13,55 +13,55 @@ def get_retriever(retriever):
     """
     match retriever:
         case "google":
-            from gpt_researcher.retrievers import GoogleSearch
+            from AI_core.retrievers import GoogleSearch
 
             retriever = GoogleSearch
         case "searx":
-            from gpt_researcher.retrievers import SearxSearch
+            from AI_core.retrievers import SearxSearch
 
             retriever = SearxSearch
         case "searchapi":
-            from gpt_researcher.retrievers import SearchApiSearch
+            from AI_core.retrievers import SearchApiSearch
 
             retriever = SearchApiSearch
         case "serpapi":
-            from gpt_researcher.retrievers import SerpApiSearch
+            from AI_core.retrievers import SerpApiSearch
 
             retriever = SerpApiSearch
         case "serper":
-            from gpt_researcher.retrievers import SerperSearch
+            from AI_core.retrievers import SerperSearch
 
             retriever = SerperSearch
         case "duckduckgo":
-            from gpt_researcher.retrievers import Duckduckgo
+            from AI_core.retrievers import Duckduckgo
 
             retriever = Duckduckgo
         case "bing":
-            from gpt_researcher.retrievers import BingSearch
+            from AI_core.retrievers import BingSearch
 
             retriever = BingSearch
         case "arxiv":
-            from gpt_researcher.retrievers import ArxivSearch
+            from AI_core.retrievers import ArxivSearch
 
             retriever = ArxivSearch
         case "tavily":
-            from gpt_researcher.retrievers import TavilySearch
+            from AI_core.retrievers import TavilySearch
 
             retriever = TavilySearch
         case "exa":
-            from gpt_researcher.retrievers import ExaSearch
+            from AI_core.retrievers import ExaSearch
 
             retriever = ExaSearch
         case "semantic_scholar":
-            from gpt_researcher.retrievers import SemanticScholarSearch
+            from AI_core.retrievers import SemanticScholarSearch
 
             retriever = SemanticScholarSearch
         case "pubmed_central":
-            from gpt_researcher.retrievers import PubMedCentralSearch
+            from AI_core.retrievers import PubMedCentralSearch
 
             retriever = PubMedCentralSearch
         case "custom":
-            from gpt_researcher.retrievers import CustomRetriever
+            from AI_core.retrievers import CustomRetriever
 
             retriever = CustomRetriever
 
@@ -104,6 +104,6 @@ def get_retrievers(headers, cfg):
 
 
 def get_default_retriever(retriever):
-    from gpt_researcher.retrievers import TavilySearch
+    from AI_core.retrievers import TavilySearch
 
     return TavilySearch
