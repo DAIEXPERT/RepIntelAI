@@ -1,0 +1,265 @@
+@keyframes gradientBG {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #eceff1; /* Changed text color */
+    line-height: 1.6;
+    background: linear-gradient(135deg, #37474f, #546e7a); /* Updated gradient colors */
+}
+
+.landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: #eceff1;
+}
+
+.landing h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff; /* Kept the same */
+    margin-bottom: 1.5rem;
+}
+
+.landing p {
+    font-size: 1.4rem;
+    font-weight: 300;
+    max-width: 800px;
+    padding: 0 20px;
+    color: #b0bec5; /* Changed paragraph color */
+}
+
+.container {
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0.3); /* Made it slightly more opaque */
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Darkened shadow */
+    transition: all .3s ease-in-out;
+    margin: 0 auto 150px;
+}
+
+.container:hover {
+    transform: scale(1.03); /* Slightly reduced scale on hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Increased hover shadow */
+}
+
+input, select, #output, #reportContainer {
+    background-color: rgba(255, 255, 255, 0.2); /* Increased opacity */
+    border: none;
+    color: #eceff1;
+    transition: all .3s ease-in-out;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+input:hover, input:focus, select:hover, select:focus {
+    background-color: #ffffff; /* Kept the same */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Made the border more prominent */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darkened shadow */
+    color: #37474f; /* Darkened text color on focus */
+}
+
+.btn-primary {
+    background: linear-gradient(to right, #4db6e9, #1e88e5); /* Updated button gradient */
+    border: none;
+    transition: all .3s ease-in-out;
+    color: #ffffff; /* Kept the same */
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+.btn-secondary {
+    background: linear-gradient(to right, #cfd8dc, #b0bec5); /* Updated secondary button gradient */
+    border: none;
+    transition: all .3s ease-in-out;
+    color: #ffffff; /* Kept the same */
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+.btn:hover {
+    opacity: 0.95; /* Slightly increased opacity on hover */
+    transform: scale(1.06); /* Increased scaling on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Darkened shadow */
+}
+
+.agent_question {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #b2ebf2; /* Changed question color */
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #263238; /* Darker footer color */
+    color: #b2ebf2; /* Changed footer text color */
+    text-align: center;
+    padding: 15px 0;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+.margin-div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.images_div {
+    padding: 0 20px;
+}
+
+.agent_response {
+    background-color: #424242; /* Darker background for responses */
+    margin: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    color: #b2ebf2; /* Changed response text color */
+}
+
+#output {
+    height: 300px;
+    overflow: auto;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.15); /* Changed opacity */
+}
+
+#reportContainer {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    padding: 25px;
+    border-radius: 12px;
+    color: #eceff1; /* Changed report text color */
+}
+
+.tags-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    border: 1px solid #fff; /* Kept the same */
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.tag {
+    background-color: #1e88e5; /* Changed tag color */
+    color: #ffffff; /* Kept tag text white */
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.tag .remove-tag {
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tag-input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    background: transparent;
+    color: #eceff1; /* Changed input text color */
+}
+
+footer a {
+    color: #ffd54f; /* Updated footer link color */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Kept the same */
+}
+
+#selectedImagesContainer {
+    background-color: rgba(255, 255, 255, 0.1); /* Kept the same */
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    color: #b2ebf2; /* Changed image container text color */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+#selectedImagesContainer h3 {
+    width: 100%;
+    margin: 0;
+    color: #b2ebf2; /* Changed header color */
+}
+
+#selectedImagesContainer img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+}
+
+#selectedImagesContainer img:hover {
+    transform: scale(1.07); /* Increased scaling on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Kept the same */
+}
+
+.image-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95); /* Made background darker */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.image-dialog img {
+    max-width: 90%;
+    max-height: 80%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Darkened shadow */
+}
+
+.image-dialog button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4db6e9; /* Changed button background */
+    color: #ffffff; /* Kept the same */
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.image-dialog button:hover {
+    background-color: #1e88e5; /* Kept the same hover color */
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>RepIntel - Reputation Intelligence</title>
+    <meta name="description" content="AI-powered reputation and brand intelligence by Magolnick Global">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./static/favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/site/styles.css" />
+    <style>
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .agent-name {
+            text-align: center;
+        }
+
+        .agent-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .agent-choices {
+            display: none;
+        }
+
+        .btn-show {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="landing">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-4xl font-extrabold mx-auto lg:text-7xl">
+                Discover and Enhance Your <br>
+                <span style="background-image:linear-gradient(to right, #9867F0, #ED4E50); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Reputation</span>
+            </h1>
+            <p class="max-w-6xl mx-auto text-gray-600 mt-8" style="font-size:20px">
+                Welcome to <b>RepIntel</b>, the AI-based reputation intelligence system by Magolnick Global. Gain insights into your online presence, analyze consumer sentiment, and uncover essential trends to help you manage and grow your brand.
+            </p>
+            <a href="#form" class="btn btn-primary">Get Your Reputation Score</a>
+        </div>
+    </section>
+
+    <main class="container" id="form">
+        <div class="agent-item"><img src="/static/repintel-logo.png" class="avatar" alt="RepIntel"></div>
+        <form method="POST" class="mt-3" onsubmit="RepIntelAI.startResearch(); return false;">
+            <div class="form-group">
+                <label for="task" class="agent-question">What would you like to analyze today?</label>
+                <input id="task" name="task" class="form-control" required></input>
+                <input type="radio" name="agent" id="autoAgent" value="Auto Agent" checked hidden>
+            </div>
+            <div class="form-group">
+                <button type="button" id="btnShowAuto" class="btn btn-secondary mt-3 btn-show">RepIntel Analysis</button>
+            </div>
+            <div class="form-group">
+                <label for="report_type" class="agent-question">Select the type of report:</label>
+                <select name="report_type" class="form-control" required>
+                    <option value="reputation_report">Reputation Overview</option>
+                    <option value="detailed_analysis">In-depth Brand Sentiment Analysis</option>
+                    <option value="trend_report">Industry & Trend Report</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tone" class="agent-question">Choose your report's focus:</label>
+                <select name="tone" id="tone" class="form-control" required>
+                    <option value="Objective">Objective - Clear and unbiased</option>
+                    <option value="Analytical">Analytical - Detailed sentiment insights</option>
+                    <option value="Informative">Informative - Provides essential reputation metrics</option>
+                    <option value="Comparative">Comparative - See how you stack up against competitors</option>
+                    <option value="Optimistic">Optimistic - Highlights positive aspects</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="report_source" class="agent-question">Where should RepIntel gather insights from?</label>
+                <p class="text-left mt-0 pt-0" style="font-size: 0.7rem;">RepIntel can research both web-based data and local documents. Ensure your document folder is properly configured.</p>
+                <select name="report_source" class="form-control" required>
+                    <option value="web">The Web</option>
+                    <option value="local">Internal Documents</option>
+                    <option value="hybrid">Hybrid</option>
+                </select>
+            </div>
+            <input type="submit" value="Analyze" class="btn btn-primary button-padding">
+        </form>
+
+        <div class="margin-div">
+            <h2>Analysis Results</h2>
+            <p class="mt-2 text-left" style="font-size: 0.8rem;">RepIntel will generate a custom report based on your selected options.</p>
+            <div id="output"></div>
+        </div>
+        <div class="images_div">
+            <div id="selectedImagesContainer" style="display: none;"></div>
+        </div>
+        <div class="margin-div">
+            <h2>Generated Report</h2>
+            <div id="reportContainer"></div>
+            <div id="reportActions">
+                <div class="alert alert-info" role="alert" id="status"></div>
+                <a id="copyToClipboard" onclick="RepIntel.copyToClipboard()" class="btn btn-secondary mt-3" style="margin-right: 10px;">Copy to clipboard (markdown)</a>
+                <a id="downloadLinkMd" href="#" class="btn btn-secondary mt-3" style="margin-right: 10px;" target="_blank">Download as Markdown</a>
+                <a id="downloadLink" href="#" class="btn btn-secondary mt-3" style="margin-right: 10px;" target="_blank">Download as PDF</a>
+                <a id="downloadLinkWord" href="#" class="btn btn-secondary mt-3" target="_blank">Download as Docx</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            <a target="_blank" href="https://www.magolnick.com/repintel">Homepage</a> |
+            <a target="_blank" href="https://github.com/magolnick/repintel">GitHub</a> |
+            <a target="_blank" href="https://discord.gg/repintel">Discord</a>
+        </p>
+        <p>RepIntel &copy; 2024</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+    <script src="/site/scripts.js"></script>
+    <script>
+        const btnShowAuto = document.getElementById('btnShowAuto');
+        const autoAgentDiv = document.getElementById('autoAgentDiv');
+        const agentChoices = document.getElementsByClassName('agent-choices');
+
+        btnShowAuto.addEventListener('click', function () {
+            btnShowAuto.style.display = 'none';
+            btnChoose.style.display = 'inline-block';
+            autoAgentDiv.style.display = 'flex';
+            agentChoices[0].style.display = 'none';
+        });
+
+        const tagsInput = document.getElementById('tags-input');
+        const input = document.getElementById('custom_source');
+
+        if (input) {
+            input.addEventListener('keypress', function (e) {
+                if ((e.key === 'Enter' || e.key === ",") && input.value !== '') {
+                    e.preventDefault();
+                    RepIntel.addTag(input.value);
+                    input.value = '';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
