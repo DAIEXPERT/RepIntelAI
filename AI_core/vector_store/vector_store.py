@@ -9,7 +9,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 class VectorStoreWrapper:
     """
-    A Wrapper for LangchainVectorStore to handle RepIntel_AI Document Type
+    A Wrapper for LangchainVectorStore to handle repintelai Document Type
     """
     def __init__(self, vector_store : VectorStore):
         self.vector_store = vector_store

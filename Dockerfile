@@ -14,7 +14,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*  # Clean up apt lists to reduce image size
 
 # Stage 2: Python dependencies installation
-FROM install-browser AS RepIntel_AI-install
+FROM install-browser AS repintelai-install
 
 ENV PIP_ROOT_USER_ACTION=ignore
 WORKDIR /usr/src/app
@@ -27,7 +27,7 @@ RUN pip install --no-cache-dir -r requirements.txt && \
     pip install --no-cache-dir -r multi_agents/requirements.txt
 
 # Stage 3: Final stage with non-root user and app
-FROM RepIntel_AI-install AS RepIntel_AI
+FROM repintelai-install AS repintelai
 
 # Use environment variables for API keys (defaults can be overridden at runtime)
 ARG OPENAI_API_KEY
@@ -37,14 +37,14 @@ ENV OPENAI_API_KEY=${OPENAI_API_KEY}
 ENV TAVILY_API_KEY=${TAVILY_API_KEY}
 
 # Create a non-root user for security
-RUN useradd -ms /bin/bash RepIntel_AI && \
-    chown -R RepIntel_AI:RepIntel_AI /usr/src/app
+RUN useradd -ms /bin/bash repintelai && \
+    chown -R repintelai:repintelai /usr/src/app
 
-USER RepIntel_AI
+USER repintelai
 WORKDIR /usr/src/app
 
 # Copy the rest of the application files with proper ownership
-COPY --chown=RepIntel_AI:RepIntel_AI ./ ./
+COPY --chown=repintelai:repintelai ./ ./
 
 # Expose the application's port
 EXPOSE 8000

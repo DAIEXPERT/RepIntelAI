@@ -18,7 +18,7 @@ Before you begin, ensure you have the following:
 ## Installation
 
 ```bash
-pip install RepIntel_AI
+pip install repintelai
 ```
 
 ## Setting Up the Environment

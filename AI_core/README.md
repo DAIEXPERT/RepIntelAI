@@ -18,7 +18,7 @@ The agent can produce detailed, factual and unbiased research reports, with cust
 > **Step 0** - Install Python 3.11 or later. [See here](https://www.tutorialsteacher.com/python/install-python) for a step-by-step guide.
 > **Step 1** - install RepIntel AIpackage [PyPI page](https://pypi.org/project/RepIntel_AI/)
 ```bash
-$ pip install RepIntel_AI
+$ pip install repintelai
 ```
 > **Step 2** - Create .env file with your OpenAI Key and Tavily API key or simply export it
 ```bash

@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "repintel-ai"
+name = "repintelai"
 version = "0.8.5"
 description = "RepIntel AI is an autonomous agent designed for comprehensive online research on a variety of tasks."
-authors = ["Assaf Elovic <assaf.elovic@gmail.com>"]
+authors = ["Mike Magolnick <mike@magolnick.com>"]
 license = "MIT"
 readme = "README.md"
 

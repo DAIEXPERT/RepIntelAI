@@ -1,7 +1,7 @@
 services:
-  RepIntel_AI:
+  repintelai:
     pull_policy: build
-    image: repintelai/RepIntel_AI
+    image: repintelai/repintelai
     build: ./
     environment:
       OPENAI_API_KEY: ${OPENAI_API_KEY}
@@ -26,8 +26,8 @@ services:
     ports:
       - 3000:3000
 
-  RepIntel_AI-tests:
-    image: repintelai/RepIntel_AI-tests
+  repintelai-tests:
+    image: repintelai/repintelai-tests
     build: ./
     environment: 
       OPENAI_API_KEY: ${OPENAI_API_KEY}

@@ -51,7 +51,7 @@ class SearchApiSearch():
         headers = {
             'Content-Type': 'application/json',
             'Authorization': f'Bearer {self.api_key}',
-            'X-SearchApi-Source': 'RepIntel_AI'
+            'X-SearchApi-Source': 'repintelai'
         }
 
         encoded_url = url + "?" + urllib.parse.urlencode(params)
