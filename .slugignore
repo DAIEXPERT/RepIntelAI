@@ -1,0 +1,4 @@
+*.txt
+*.md
+tests/
+docs/
