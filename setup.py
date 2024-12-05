@@ -13,8 +13,8 @@ exclude_packages = [
     "langgraph"
 ]
 
-with open(r"README.md", "r", encoding="utf-8") as f:
-    long_description = f.read()
+"""with open(r"README.md", "r", encoding="utf-8") as f:
+    long_description = f.read()"""
 
 with open("requirements.txt", "r") as f:
     reqs = [line.strip() for line in f if not any(pkg in line for pkg in exclude_packages)]

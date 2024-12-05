@@ -4,7 +4,7 @@ version = "0.8.5"
 description = "RepIntel AI is an autonomous agent designed for comprehensive online research on a variety of tasks."
 authors = ["Mike Magolnick <mike@magolnick.com>"]
 license = "MIT"
-readme = "README.md"
+#readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
