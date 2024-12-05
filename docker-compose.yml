@@ -1,7 +1,7 @@
 services:
-  repintelai:
+  AI_core:
     pull_policy: build
-    image: repintelai/repintelai
+    image: AI_core/AI_core
     build: ./
     environment:
       OPENAI_API_KEY: ${OPENAI_API_KEY}
@@ -10,9 +10,9 @@ services:
     restart: always
     ports:
       - 8000:8000
-  repintelai-nextjs:
+  AI_core-nextjs:
     pull_policy: build
-    image: repintelai/repintelai-nextjs
+    image: AI_core/AI_core-nextjs
     stdin_open: true
     environment:
       - CHOKIDAR_USEPOLLING=true
@@ -26,8 +26,8 @@ services:
     ports:
       - 3000:3000
 
-  repintelai-tests:
-    image: repintelai/repintelai-tests
+  AI_core-tests:
+    image: AI_core/AI_core-tests
     build: ./
     environment: 
       OPENAI_API_KEY: ${OPENAI_API_KEY}

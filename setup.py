@@ -9,7 +9,7 @@ exclude_packages = [
     "fastapi.*",
     "uvicorn",
     "jinja2",
-    "repintelai",
+    "AI_core",
     "langgraph"
 ]
 
@@ -20,14 +20,14 @@ with open("requirements.txt", "r") as f:
     reqs = [line.strip() for line in f if not any(pkg in line for pkg in exclude_packages)]
 
 setup(
-    name="repintelai",
+    name="AI_core",
     version=LATEST_VERSION,
     description="the AI-based reputation intelligence system by Magolnick Global. Gain insights into your online presence, analyze consumer sentiment, and uncover essential trends to help you manage and grow your brand.",
     package_dir={'AI_core': 'AI_core'},
     packages=find_packages(exclude=exclude_packages),
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://www.magolnick.com/repintel",
+    url="https://www.magolnick.com/AI_core",
     author="Mike Magolnick",
     author_email="mike@magolnick.com",
     license="MIT",
