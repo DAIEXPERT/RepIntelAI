@@ -1,0 +1,25 @@
+# Development environments and virtual environments
+venv/
+.env
+.env.example
+
+# Documentation
+docs/
+my-docs/
+outputs/
+
+# Tests and test-related files
+tests/
+
+# Git and version control
+.git/
+.github/
+
+# Other unnecessary files
+citation.cff
+langgraph.json
+nltk.txt
+deploy.sh
+docker-compose.yml
+Dockerfile
+poetry.toml
