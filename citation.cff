@@ -3,7 +3,7 @@ message: "If you use this software, please cite it as below."
 authors:
   - family-names: magolnick
     given-names: mike
-title: RepIntel_AI
+title: AI_core
 version: 0.5.4
 date-released: 2024-12-15
 repository-code: https://github.com
